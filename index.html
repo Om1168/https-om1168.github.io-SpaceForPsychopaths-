@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpaceForPsychopaths</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background: #000;
+      color: #00ff88;
+      overflow-x: hidden;
+    }
+
+    .matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.22;
+    }
+
+    .matrix span {
+      position: absolute;
+      top: -100px;
+      color: #00ff55;
+      font-size: 14px;
+      white-space: nowrap;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-100px); }
+      to { transform: translateY(110vh); }
+    }
+
+    .center {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .glitch {
+      font-size: 64px;
+      font-weight: 900;
+      color: #00ff88;
+      text-shadow: 0 0 12px #00ff88;
+      position: relative;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.3;
+    }
+
+    .glitch::before {
+      animation: glitch1 0.35s infinite;
+      color: #00ff55;
+    }
+
+    .glitch::after {
+      animation: glitch2 0.3s infinite;
+      color: #00ffaa;
+    }
+
+    @keyframes glitch1 {
+      0% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      100% { transform: translate(2px, -1px); }
+    }
+
+    @keyframes glitch2 {
+      0% { transform: translate(-2px, 2px); }
+      50% { transform: translate(2px, -1px); }
+      100% { transform: translate(-2px, 1px); }
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #00ffaa;
+      max-width: 600px;
+    }
+
+    /* Button */
+    .btn {
+      margin-top: 30px;
+      padding: 15px 40px;
+      border: 2px solid #00ff88;
+      color: #00ffcc;
+      border-radius: 12px;
+      font-size: 20px;
+      text-decoration: none;
+      transition: 0.25s ease;
+      box-shadow: 0 0 15px #00ff88, inset 0 0 10px rgba(0,255,150,0.4);
+      background: rgba(0, 255, 120, 0.12);
+      letter-spacing: 1px;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: rgba(0, 255, 120, 0.25);
+      box-shadow: 0 0 25px #00ff88, inset 0 0 15px rgba(0,255,150,0.6);
+      transform: scale(1.07);
+    }
+
+    .info {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      font-size: 18px;
+      padding-bottom: 40px;
+      color: #00ffcc;
+    }
+
+    a {
+      color: #00ffaa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="matrix" id="matrix"></div>
+
+  <div class="center">
+    <div class="glitch" data-text="SpaceForPsychopaths">SpaceForPsychopaths</div>
+    <p class="subtitle">Ethical Security.</p>
+    <a href="#contact" class="btn">Contact Us</a>
+  </div>
+
+  <div class="info" id="contact">
+    You can reach us through the following channels:<br><br>
+    <strong>Email:</strong> thetejaswaje@gmail.com<br>
+    <strong>Telegram:</strong> <a href="https://t.me/+16m99yaPvOtiMTE1">Join Channel</a><br>
+    <strong>Discord:</strong> SpaceForPsychopaths#0001
+  </div>
+
+  <script>
+    const matrix = document.getElementById("matrix");
+    const chars = "01<>[]{}=+*/$#";
+
+    for (let i = 0; i < 50; i++) {
+      const span = document.createElement("span");
+      span.textContent = chars.repeat(20);
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.animationDuration = Math.random() * 5 + 4 + "s";
+      matrix.appendChild(span);
+    }
+  </script>
+
+</body>
+</html>
